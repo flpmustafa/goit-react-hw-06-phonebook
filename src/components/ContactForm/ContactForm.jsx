@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { addContact } from 'Redux/ContactsSlise';
 import css from './ContactForm.module.css';
 
-
 export function ContactForm() {
   const dispatch = useDispatch();
 
