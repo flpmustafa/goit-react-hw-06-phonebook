@@ -13,7 +13,7 @@ export function App() {
       <h2 className={css.h}>Phonebook</h2>
       <ContactForm />
       {!user.length ? (
-        <p>Your phonebook is empty. Add your first contact</p>
+        <p className={css.h}>Your phonebook is empty. Add your first contact</p>
       ) : (
         <>
           <Filter />
