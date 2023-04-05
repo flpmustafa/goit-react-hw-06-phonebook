@@ -1,22 +1,22 @@
-import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import { addContact } from 'Redux/ContactsSlise';
 import css from './ContactForm.module.css';
 
-export function ContactForm() {
+export const ContactForm = () => {
+  const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
-
+  
   const inputSubmit = evt => {
     evt.preventDefault();
 
-    const newContact = {
-      id: nanoid(),
-      name: evt.target.elements.name.value,
-      number: evt.target.elements.number.value,
-    };
+    const name = evt.target.elements.name.value.trim();
+    const number = evt.target.elements.number.value;
 
-    dispatch(addContact(newContact));
-
+    if (contacts.some(({ name: nName }) => nName === name)) {
+      alert(`${name} is already in contacts!`);
+    } else {
+      dispatch(addContact(name, number));
+     }
     evt.target.reset();
   };
 
